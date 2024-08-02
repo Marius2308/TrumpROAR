@@ -1,17 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <main>
-        <h1>Welcome to My Website</h1>  
-    </main>
-	<script src="index.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrumpROAR</title>
+  <link rel="icon" href="C:\Users\djsha\OneDrive\Desktop\A1\Frame 5 2.png" type="image/jpeg">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      position: relative;
+    }
+    .background-container {
+      background-image: url('background12.jpg'); /* Path to your image */
+      background-size: cover; /* Scale the background image to cover the entire container */
+      background-position: center; /* Center the background image */
+      background-repeat: no-repeat; /* Prevent the background image from repeating */
+      height: 500vh; /* Set the height to be larger than the viewport */
+      width: 100%;
+      z-index: 1; /* Ensure background is at the lowest layer */
+      position: absolute;
+    }
+    .container {
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: flex-start; /* Align to the top */
+      height: 100vh; /* Full viewport height */
+      position: relative;
+    }
+    .image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 350px;
+      height: 350px;
+      transition: transform 0.2s ease-out;
+      transform-origin: center center;
+      will-change: transform;
+      z-index: 2; /* Ensure image is above background */
+    }
+    .image-button {
+      transition: transform 0.2s ease-out;
+      cursor: pointer;
+      z-index: 4; /* Ensure buttons are above other elements */
+    }
+
+    /* Example positions for each button */
+    #dex {
+      top: 675px;
+      left: 400px;
+      position: absolute;
+    }
+
+    #telegram {
+      top: 375px;
+      right: 400px;
+      position: absolute;
+    }
+
+    #twitter {
+      bottom: 475px;
+      left: 400px;
+      position: absolute;
+    }
+
+    #pumpfun {
+      bottom: 175px;
+      right: 400px;
+      position: absolute;
+    }
+    
+    .styled-container {
+      position: absolute;
+      top: 900px; /* Adjust top position as needed */
+      left: 500px; /* Adjust left position as needed */
+      padding: 0;
+      padding-left: 40px;
+      padding-right: 40px;
+      border: 4px solid #000; /* Stroke */
+      background-color: #e917172c; /* Fill */
+      border-radius: 50px; /* Cornered edges */
+      text-align: center;
+      font-family: 'Inria Serif', serif;
+      font-size: 24px;
+      color: #000;
+      z-index: 5; /* Ensure container is above all other elements */
+      width: 750px;
+      height: 350px;
+    }
+    .styled-container2 {
+      position: absolute;
+      top: 1300px; /* Adjust top position as needed */
+      left: 675px; /* Adjust left position as needed */
+      padding: 30px;
+      padding-left: 40px;
+      padding-right: 40px;
+      border: 4px solid #000; /* Stroke */
+      background-color: #e917172c; /* Fill */
+      border-radius: 50px; /* Cornered edges */
+      text-align: center;
+      font-family: 'Inria Serif', serif;
+      font-size: 24px;
+      color: #000;
+      z-index: 6; /* Ensure container is above all other elements */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .button-container {
+      margin-top: 20px;
+    }
+    .image-with-stroke {
+      border: 4px solid #000; /* Stroke */
+      border-radius: 32px; /* Cornered edges */
+      margin-top: 10px; /* Add margin to create space between the button and the image */
+      width: 400px; /* Adjust the width as needed */
+      height: auto; /* Maintain aspect ratio */
+    }
+    .image-with-stroke2 {
+      border: 4px solid #000; /* Stroke */
+      border-radius: 32px; /* Cornered edges */
+      width: 50px; /* Adjust the width as needed */
+      height: auto; /* Maintain aspect ratio */
+    }
+
+    .countdown-container {
+      text-align: center;
+      margin: 0; /* Remove all margins */
+      padding: 0; /* Remove all padding */
+      width: 40vw; /* Adjust width as needed */
+      height: 40vh; /* Adjust height as needed */
+    }
+    
+    .countdown-timer {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      font-size: 20px; /* Adjust font size as needed */
+    }
+    .styled-container3 {
+      position: absolute;
+      top: 2225px; /* Adjust top position as needed */
+      left: 500px; /* Adjust left position as needed */
+      padding: 40px;
+      border: 4px solid #000; /* Stroke */
+      background-color: #e917172c; /* Fill */
+      border-radius: 50px; /* Cornered edges */
+      text-align: center;
+      font-family: 'Inria Serif', serif;
+      font-size: 24px;
+      color: #000;
+      z-index: 5; /* Ensure container is above all other elements */
+      width: 750px;
+      height: 1350px;
+    }
+    .inner-container {
+      width: 100%; /* Full width of the parent */
+      height: 100%; /* Full height of the parent */
+      background-color: #eb0c0ca9; /* Fill color to match styled-container3 */
+      border: 4px solid #000; /* Stroke */
+      border-radius: 50px; /* Cornered edges */
+      padding: 20px; /* Padding inside the container */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+      margin: 10px 0; /* Margin to separate the containers */
+    }
+    .styled-container3-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .styled-container4 {
+  position: absolute;
+  top: 3700px; /* Adjust top position as needed */
+  left: 500px; /* Adjust left position as needed */
+  padding: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  border: 4px solid #000; /* Stroke */
+  background-color: #e917172c; /* Fill */
+  border-radius: 50px; /* Cornered edges */
+  text-align: center;
+  font-family: 'Inria Serif', serif;
+  font-size: 24px;
+  color: #000;
+  z-index: 5; /* Ensure container is above all other elements */
+  width: 750px;
+  height: 750px;
+  overflow: hidden; /* Hide overflow to only show the current slide */
+}
+
+.slideshow-container {
+  display: flex;
+  width: 100%; /* Full width of the parent */
+  height: 100%; /* Full height of the parent */
+  transition: transform 1s ease-in-out; /* Smooth transition for sliding */
+  top: 5000px;
+}
+
+.slide {
+  min-width: 100%; /* Each slide takes full width of the container */
+  height: 100%; /* Full height of the container */
+  box-sizing: border-box; /* Include padding in width/height calculation */
+}
+
+.slide img {
+  width: 100%; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+  </style>
+</head>
+<body>
+  <div class="background-container">
+    <div class="container">
+        <img src="C:\Users\djsha\OneDrive\Desktop\A1\TrumpStretch 1.png" alt="Example Image" class="image" />
+    </div>
+  </div>
+
+  <a href="">
+    <img id="dex" class="image-button" src="C:\Users\djsha\OneDrive\Desktop\A1\dexscreener 2.png" alt="Button 1" width="100" height="100">
+  </a>
+  <a href="https://t.me/+xZzcMfrsZIAwOTRk">
+    <img id="telegram" class="image-button" src="C:\Users\djsha\OneDrive\Desktop\A1\icon-park_telegram.png" alt="Button 2" width="100" height="100">
+  </a>
+  <a href="https://x.com/RoarTrump84619">
+    <img id="twitter" class="image-button" src="C:\Users\djsha\OneDrive\Desktop\A1\mage_x.png" alt="Button 3" width="100" height="100">
+  </a>
+  <a href="">
+    <img id="pumpfun" class="image-button" src="C:\Users\djsha\OneDrive\Desktop\A1\pumpfun.png" alt="Button 4" width="100" height="100">
+  </a>
+
+  <div class="styled-container" style="color: rgb(0, 0, 0);">
+    <h3>Address: Coming Soon!</h3>
+    <div class="countdown-container">
+      <script src="https://cdn.logwork.com/widget/countdown.js"></script>
+      <a href="https://logwork.com/countdown-fkz1" class="countdown-timer" data-timezone="Europe/Bucharest" data-textcolor="#000000" data-date="2024-08-03 22:00" data-background="#000000" data-digitscolor="#ffffff" data-unitscolor="#000000">Coin Launch</a>
+    </div>
+  </div>
+
+  <div class="styled-container2">
+    <div>
+      <h2>Join Trump's<br>Journey In The</br></h2>
+      <h1>CRYPTO<br>MARKET</br></h1>
+      <img class="image-with-stroke" src="C:\Users\djsha\OneDrive\Desktop\A1\Frame 5 2.png" alt="Example Image with Stroke">
+    </div>
+    <div class="button-container">
+      <a href="">
+        <img id="button1" class="image-button" src="C:\Users\djsha\OneDrive\Desktop\A1\button1.png" alt="Button 5" width="300" height="75">
+      </a>
+    </div>
+  </div>
+
+  <div class="styled-container3" style="color: rgb(0, 0, 0);">
+    <h1 style="font-size: 80px;">Trumpenomics</h1>
+    <div class="styled-container3-wrapper">
+      <div class="inner-container">
+        <h2>Token Name: To Be Announced</h2>
+      </div>
+      <div class="inner-container">
+        <h2>Network: SOLANA</h2>
+      </div>
+      <div class="inner-container">
+        <h2>NO TAX</h2>
+      </div>
+      <div class="inner-container">
+        <h2>CA: To Be Announced</h2>
+      </div>
+      <div class="inner-container">
+        <h2>Initial Supply: 1 Billion</h2>
+      </div>
+      <div class="inner-container">
+        <h2>Circulating Supply: 1 Billion</h2>
+      </div>
+      <div class="inner-container">
+        <h2>Liquidity: BURNED</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="styled-container4">
+    <div class="slideshow-container">
+      <div class="slide"><img src="c:\Users\djsha\OneDrive\Desktop\A1\meme1.png" alt="Slide 1"></div>
+      <div class="slide"><img src="c:\Users\djsha\OneDrive\Desktop\A1\meme2.png" alt="Slide 2"></div>
+      <div class="slide"><img src="c:\Users\djsha\OneDrive\Desktop\A1\meme3.png" alt="Slide 3"></div>
+      <div class="slide"><img src="c:\Users\djsha\OneDrive\Desktop\A1\meme4.png" alt="Slide 4"></div>
+      <div class="slide"><img src="c:\Users\djsha\OneDrive\Desktop\A1\meme5.png" alt="Slide 5"></div>
+      <div class="slide"><img src="c:\Users\djsha\OneDrive\Desktop\A1\meme6.png" alt="Slide 6"></div>
+    </div>
+  </div>
+  
+
+  <script>
+    const image = document.querySelector('.image');
+    const container = document.querySelector('.container');
+
+    container.addEventListener('mousemove', (e) => {
+      const { clientX: mouseX, clientY: mouseY } = e;
+      const { offsetWidth: containerWidth, offsetHeight: containerHeight } = container;
+
+      const centerX = containerWidth / 2;
+      const centerY = containerHeight / 2;
+
+      const deltaX = mouseX - centerX;
+      const deltaY = mouseY - centerY;
+
+      // Calculate scale based on the distance from the center
+      const distance = Math.sqrt(deltaX**2 + deltaY**2);
+      const scaleFactor = 1 + distance / 500; // Adjust divisor to change scaling sensitivity
+
+      // Calculate translation based on the mouse position
+      const xOffset = deltaX / 20; // Adjust divisor to change movement sensitivity
+      const yOffset = deltaY / 20; // Adjust divisor to change movement sensitivity
+
+      // Apply the transform to move and scale the image
+      image.style.transform = `translate(-50%, -50%) translate(${xOffset}px, ${yOffset}px) scale(${scaleFactor})`;
+    });
+    
+    document.querySelectorAll('.image-button').forEach(button => {
+      button.addEventListener('mousemove', (e) => {
+        const { clientX: mouseX, clientY: mouseY } = e;
+        const { offsetWidth: buttonWidth, offsetHeight: buttonHeight } = button;
+        const centerX = buttonWidth / 2;
+        const centerY = buttonHeight / 2;
+        const deltaX = mouseX - centerX;
+        const deltaY = mouseY - centerY;
+        const distance = Math.sqrt(deltaX**2 + deltaY**2);
+        const scaleFactor = 1 + distance / 500;
+        const xOffset = deltaX / 20;
+        const yOffset = deltaY / 20;
+        button.style.transform = `translate(${xOffset}px, ${yOffset}px) scale(${scaleFactor})`;
+      });
+
+      button.addEventListener('mouseleave', () => {
+        button.style.transform = 'translate(0, 0) scale(1)';
+      });
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelectorAll('.styled-container4 .slide');
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+  const slideInterval = 3000; // Time in milliseconds for each slide to change (e.g., 3000ms = 3s)
+
+  function updateSlide() {
+    const slideWidth = slides[0].clientWidth;
+    document.querySelector('.styled-container4 .slideshow-container').style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
+
+  function goToNextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlide();
+  }
+
+  setInterval(goToNextSlide, slideInterval);
+
+  window.addEventListener('resize', updateSlide); // Adjust for window resize
+});
+
+  </script>
+</body>
 </html>
